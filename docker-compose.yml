@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  db-monitor:
+    build: .
+    container_name: device-db-monitor
+    restart: unless-stopped
+    env_file:
+      - .env
+    # 如果系統時間很重要，可以將本機時間掛載進去 (Linux環境適用)
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
